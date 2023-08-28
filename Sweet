@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Sweet Bonanza</title>
+</head>
+<body>
+    <div class="game-container">
+        <div class="slot-machine">
+            <div class="slot" id="slot1">Karpuz</div>
+            <div class="slot" id="slot2">Üzüm</div>
+            <div class="slot" id="slot3">Muz</div>
+            <div class="slot" id="slot4">Erik</div>
+            <div class="slot" id="slot5">Kalp</div>
+        </div>
+        <button id="spin-button">Çevir</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.slot-machine {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.slot {
+    border: 2px solid #333;
+    padding: 20px;
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+#spin-button {
+    background-color: #f39c12;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+const slots = ["Karpuz", "Üzüm", "Muz", "Erik", "Kalp"];
+const spinButton = document.getElementById("spin-button");
+
+spinButton.addEventListener("click", spin);
+
+function spin() {
+    const slotElements = document.querySelectorAll(".slot");
+    slotElements.forEach(slot => {
+        const randomIndex = Math.floor(Math.random() * slots.length);
+        slot.textContent = slots[randomIndex];
+    });
+}
